@@ -130,45 +130,6 @@ Mô phỏng quá trình training qua 20 epochs:
 - **mAP progression**: Độ chính xác tăng theo thời gian training
 - **Learning rate schedule**: Sử dụng cosine annealing để tối ưu convergence
 
-## Mục Tiêu Dự Án
-
-Dự án này nhằm phát triển một hệ thống phát hiện rác thải tự động sử dụng công nghệ YOLOv8 (You Only Look Once version 8). Hệ thống có khả năng:
-
--   **Phát hiện và phân loại** các loại rác thải khác nhau trong hình ảnh
--   **Định vị chính xác** vị trí rác thải với bounding box
--   **Xử lý thời gian thực** với tốc độ cao
--   **Độ chính xác cao** trong việc nhận diện các đối tượng rác thải
--   **Ứng dụng thực tế** trong việc quản lý môi trường và tái chế
-
-## Cấu Trúc Thư Mục Dự Án
-
-```
-yolov11/
-├── dataset.v1i.yolov8/          # Dataset phiên bản 1
-│   ├── data.yaml                # Cấu hình dataset
-│   ├── train/                   # Dữ liệu huấn luyện
-│   │   ├── images/             # Hình ảnh huấn luyện
-│   │   └── labels/             # Nhãn huấn luyện
-│   │
-│   ├── valid/                   # Dữ liệu xác thực
-│   │   ├── images/             # Hình ảnh xác thực
-│   │   └── labels/             # Nhãn xác thực
-│   │
-│   └── test/                    # Dữ liệu kiểm thử
-│       ├── images/              # Hình ảnh kiểm thử
-│       └── labels/              # Nhãn kiểm thử
-│
-├── dataset.v2i.yolov8/          # Dataset phiên bản 2
-│   ├── data.yaml                # Cấu hình dataset
-│   ├── train/                   # Dữ liệu huấn luyện
-│   ├── valid/                   # Dữ liệu xác thực
-│   └── test/                    # Dữ liệu kiểm thử
-│
-├── waste_detection.ipynb        # Notebook gốc từ Google Colab
-├── requirements.txt             # Các thư viện Python cần thiết
-└── README.md                   # Tài liệu hướng dẫn này
-```
-
 ## Công Nghệ Sử Dụng
 
 ### Core Technologies
