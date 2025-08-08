@@ -1,7 +1,5 @@
 import os
-import time
 import cv2
-import numpy as np
 from ultralytics import YOLO
 from pathlib import Path
 
