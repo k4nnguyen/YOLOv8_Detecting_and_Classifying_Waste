@@ -299,7 +299,7 @@ Input Image → Preprocessing → YOLOv8 Inference → Post-processing → Resul
 ### Bước 1: Clone Repository
 
 ```bash
-git clone <repository-url>
+git clone <https://github.com/PhucHuwu/YOLOv8_Detecting_and_Classifying_Waste.git>
 cd yolov11
 ```
 
