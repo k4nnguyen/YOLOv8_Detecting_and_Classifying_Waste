@@ -1,14 +1,34 @@
 # YOLOv8 Waste Detection Project
 
+## Mục Lục
+
+-   [Tổng Quan Dự Án](#tổng-quan-dự-án)
+-   [Cấu Trúc Dự Án](#cấu-trúc-dự-án)
+-   [Thông Số Dataset](#thông-số-dataset)
+-   [Cấu Hình Training](#cấu-hình-training)
+-   [Phân Tích Biểu Đồ](#phân-tích-biểu-đồ)
+-   [Công Nghệ Sử Dụng](#công-nghệ-sử-dụng)
+-   [Kiến Trúc Hệ Thống](#kiến-trúc-hệ-thống)
+-   [Các Module Chính](#các-module-chính)
+-   [Pipeline](#pipeline)
+-   [Hướng Dẫn Cài Đặt](#hướng-dẫn-cài-đặt)
+-   [Hướng Dẫn Sử Dụng](#hướng-dẫn-sử-dụng)
+-   [Kết Quả và Hiệu Suất](#kết-quả-và-hiệu-suất)
+-   [Xử Lý Sự Cố](#xử-lý-sự-cố)
+-   [Tài Liệu Tham Khảo](#tài-liệu-tham-khảo)
+-   [Đóng Góp](#đóng-góp)
+-   [Giấy Phép](#giấy-phép)
+
 ## Tổng Quan Dự Án
 
 Dự án phát triển hệ thống phát hiện và phân loại rác thải tự động sử dụng YOLOv8 (You Only Look Once version 8), hỗ trợ 7 loại rác thải khác nhau với độ chính xác cao và xử lý thời gian thực.
 
 ### Khả Năng Chính
-- **Phát hiện đối tượng**: Định vị chính xác vị trí rác thải với bounding box
-- **Phân loại tự động**: Nhận diện 7 loại rác: banana-peel, glass, metal, orange-peel, paper, plastic, styrofoam
-- **Xử lý real-time**: Tốc độ xử lý nhanh phù hợp ứng dụng thực tế
-- **Tích hợp dễ dàng**: API đơn giản, hỗ trợ nhiều định dạng input
+
+-   **Phát hiện đối tượng**: Định vị chính xác vị trí rác thải với bounding box
+-   **Phân loại tự động**: Nhận diện 7 loại rác: banana-peel, glass, metal, orange-peel, paper, plastic, styrofoam
+-   **Xử lý real-time**: Tốc độ xử lý nhanh phù hợp ứng dụng thực tế
+-   **Tích hợp dễ dàng**: API đơn giản, hỗ trợ nhiều định dạng input
 
 ## Cấu Trúc Dự Án
 
@@ -40,20 +60,23 @@ yolov11/
 ## Thông Số Dataset
 
 ### Tổng Quan Dataset
-- **Tổng số ảnh**: 9,413 ảnh
-- **Workspace**: phan-vn-khi (Roboflow)
-- **Project**: dataset-usskc
-- **Version**: 1
-- **License**: CC BY 4.0
+
+-   **Tổng số ảnh**: 9,413 ảnh
+-   **Workspace**: phan-vn-khi (Roboflow)
+-   **Project**: dataset-usskc
+-   **Version**: 1
+-   **License**: CC BY 4.0
 
 ### Phân Chia Dữ Liệu
+
 | Tập dữ liệu | Số lượng ảnh | Tỷ lệ |
-|-------------|-------------|-------|
-| Training    | 8,169       | 86.8% |
-| Validation  | 628         | 6.7%  |
-| Test        | 616         | 6.5%  |
+| ----------- | ------------ | ----- |
+| Training    | 8,169        | 86.8% |
+| Validation  | 628          | 6.7%  |
+| Test        | 616          | 6.5%  |
 
 ### Các Loại Rác Thải (7 classes)
+
 1. **banana-peel** - Vỏ chuối
 2. **orange-peel** - Vỏ cam
 3. **paper** - Giấy
@@ -65,17 +88,19 @@ yolov11/
 ## Cấu Hình Training
 
 ### Model Configuration
-- **Architecture**: YOLOv8 Nano (yolov8n.pt)
-- **Input size**: 640x640 pixels
-- **Batch size**: 32
-- **Epochs**: 20
-- **Optimizer**: AdamW
-- **Framework**: Ultralytics
+
+-   **Architecture**: YOLOv8 Nano (yolov8n.pt)
+-   **Input size**: 640x640 pixels
+-   **Batch size**: 32
+-   **Epochs**: 20
+-   **Optimizer**: AdamW
+-   **Framework**: Ultralytics
 
 ### Hardware Requirements
-- **GPU**: NVIDIA GPU với CUDA support (khuyến nghị)
-- **RAM**: Tối thiểu 8GB
-- **Storage**: 15GB để chứa dataset và models
+
+-   **GPU**: NVIDIA GPU với CUDA support (khuyến nghị)
+-   **RAM**: Tối thiểu 8GB
+-   **Storage**: 15GB để chứa dataset và models
 
 ## Phân Tích Biểu Đồ
 
@@ -90,9 +115,10 @@ Biểu đồ phân bố dataset cho thấy sự chia tách hợp lý với 86.8%
 ![Class Distribution](visualization/class_distribution.png)
 
 Hệ thống hỗ trợ 7 loại rác thải được phân chia theo tính chất môi trường:
-- **Organic waste**: banana-peel, orange-peel (phân hủy sinh học)
-- **Recyclable materials**: glass, metal, paper, plastic (có thể tái chế)
-- **Non-recyclable**: styrofoam (khó tái chế)
+
+-   **Organic waste**: banana-peel, orange-peel (phân hủy sinh học)
+-   **Recyclable materials**: glass, metal, paper, plastic (có thể tái chế)
+-   **Non-recyclable**: styrofoam (khó tái chế)
 
 ### 3. Training Configuration
 
@@ -105,16 +131,18 @@ Cấu hình training tối ưu với YOLOv8 Nano cân bằng giữa tốc độ 
 ![Performance Metrics](visualization/performance_metrics.png)
 
 Các chỉ số hiệu suất dự kiến:
-- **Precision**: ~0.85 - Tỷ lệ dự đoán đúng trong các detection
-- **Recall**: ~0.82 - Khả năng phát hiện đối tượng thực tế
-- **mAP@0.5**: ~0.88 - Độ chính xác trung bình tại IoU threshold 0.5
-- **mAP@0.5:0.95**: ~0.65 - Độ chính xác trung bình trên nhiều threshold
+
+-   **Precision**: ~0.85 - Tỷ lệ dự đoán đúng trong các detection
+-   **Recall**: ~0.82 - Khả năng phát hiện đối tượng thực tế
+-   **mAP@0.5**: ~0.88 - Độ chính xác trung bình tại IoU threshold 0.5
+-   **mAP@0.5:0.95**: ~0.65 - Độ chính xác trung bình trên nhiều threshold
 
 ### 5. Detection Pipeline
 
 ![Detection Pipeline](visualization/detection_pipeline.png)
 
 Quy trình detection bao gồm 5 bước chính:
+
 1. **Input Image**: Nhận ảnh đầu vào
 2. **YOLOv8 Model**: Xử lý qua mạng neural
 3. **Object Detection**: Phát hiện vùng chứa đối tượng
@@ -126,9 +154,10 @@ Quy trình detection bao gồm 5 bước chính:
 ![Training Simulation](visualization/training_simulation.png)
 
 Mô phỏng quá trình training qua 20 epochs:
-- **Loss curves**: Training và validation loss giảm dần, cho thấy model học tốt
-- **mAP progression**: Độ chính xác tăng theo thời gian training
-- **Learning rate schedule**: Sử dụng cosine annealing để tối ưu convergence
+
+-   **Loss curves**: Training và validation loss giảm dần, cho thấy model học tốt
+-   **mAP progression**: Độ chính xác tăng theo thời gian training
+-   **Learning rate schedule**: Sử dụng cosine annealing để tối ưu convergence
 
 ## Công Nghệ Sử Dụng
 
@@ -313,16 +342,16 @@ python -c "import ultralytics; print('Ultralytics installed successfully')"
 
 ```bash
 # Sử dụng dataset có sẵn
-python train.py --data-yaml dataset.v1i.yolov8/data.yaml
+python waste_detection.ipynb --data-yaml dataset.v1i.yolov8/data.yaml
 
 # Download và huấn luyện từ Roboflow
-python train.py --api-key YOUR_API_KEY --epochs 20 --batch-size 32
+python waste_detection.ipynb --api-key YOUR_API_KEY --epochs 20 --batch-size 32
 ```
 
 #### Huấn Luyện Nâng Cao
 
 ```bash
-python train.py \
+python waste_detection.ipynb \
     --api-key YOUR_API_KEY \
     --workspace YOUR_WORKSPACE_NAME \
     --project YOUR_PROJECT_NAME \
@@ -385,7 +414,7 @@ python test.py --image-dir path/to/images/
 
 ```bash
 # Download dataset và huấn luyện
-python train.py --api-key YOUR_API_KEY --workspace YOUR_WORKSPACE --project YOUR_PROJECT --epochs 30 --model-size m
+python waste_detection.ipynb --api-key YOUR_API_KEY --workspace YOUR_WORKSPACE --project YOUR_PROJECT --epochs 30 --model-size m
 ```
 
 #### Bước 2: Đánh Giá
@@ -438,10 +467,10 @@ results/
 
 ```bash
 # Giảm batch size
-python train.py --batch-size 8
+python waste_detection.ipynb --batch-size 8
 
 # Sử dụng model nhỏ hơn
-python train.py --model-size n
+python waste_detection.ipynb --model-size n
 ```
 
 #### 2. Dataset Không Tìm Thấy
@@ -452,7 +481,7 @@ python train.py --model-size n
 
 #### 3. Model Không Tìm Thấy
 
--   Huấn luyện model trước bằng `train.py`
+-   Huấn luyện model trước bằng `waste_detection.ipynb`
 -   Kiểm tra đường dẫn model trong `test.py`
 
 ### Mẹo Tối Ưu Hiệu Suất
