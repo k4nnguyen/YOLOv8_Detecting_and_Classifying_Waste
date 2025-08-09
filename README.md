@@ -36,12 +36,15 @@ Dự án phát triển hệ thống phát hiện và phân loại rác thải t�
 yolov11/
 ├── dataset.v1i.yolov8/              # Dataset chính (9,413 ảnh)
 │   ├── data.yaml                    # Cấu hình dataset
+│   │
 │   ├── train/                       # Training set (8,169 ảnh - 86.8%)
 │   │   ├── images/                  # Ảnh huấn luyện
 │   │   └── labels/                  # Nhãn YOLO format
+│   │
 │   ├── valid/                       # Validation set (628 ảnh - 6.7%)
 │   │   ├── images/                  # Ảnh validation
 │   │   └── labels/                  # Nhãn validation
+│   │
 │   └── test/                        # Test set (616 ảnh - 6.5%)
 │       ├── images/                  # Ảnh test
 │       └── labels/                  # Nhãn test
