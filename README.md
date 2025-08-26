@@ -1,94 +1,96 @@
 # YOLOv8 Waste Detection Project
 
-## Mục Lục
+[VN README](README-vi.md)
 
--   [Tổng Quan Dự Án](#tổng-quan-dự-án)
--   [Cấu Trúc Dự Án](#cấu-trúc-dự-án)
--   [Thông Số Dataset](#thông-số-dataset)
--   [Cấu Hình Training](#cấu-hình-training)
--   [Phân Tích Biểu Đồ](#phân-tích-biểu-đồ)
--   [Công Nghệ Sử Dụng](#công-nghệ-sử-dụng)
--   [Kiến Trúc Hệ Thống](#kiến-trúc-hệ-thống)
--   [Các Module Chính](#các-module-chính)
+## Table of Contents
+
+-   [Project Overview](#project-overview)
+-   [Project Structure](#project-structure)
+-   [Dataset Specifications](#dataset-specifications)
+-   [Training Configuration](#training-configuration)
+-   [Charts Analysis](#charts-analysis)
+-   [Technologies Used](#technologies-used)
+-   [System Architecture](#system-architecture)
+-   [Core Modules](#core-modules)
 -   [Pipeline](#pipeline)
--   [Hướng Dẫn Cài Đặt](#hướng-dẫn-cài-đặt)
--   [Hướng Dẫn Sử Dụng](#hướng-dẫn-sử-dụng)
--   [Kết Quả và Hiệu Suất](#kết-quả-và-hiệu-suất)
--   [Xử Lý Sự Cố](#xử-lý-sự-cố)
--   [Tài Liệu Tham Khảo](#tài-liệu-tham-khảo)
--   [Đóng Góp](#đóng-góp)
--   [Giấy Phép](#giấy-phép)
+-   [Installation Guide](#installation-guide)
+-   [Usage Guide](#usage-guide)
+-   [Results and Performance](#results-and-performance)
+-   [Troubleshooting](#troubleshooting)
+-   [References](#references)
+-   [Contributing](#contributing)
+-   [License](#license)
 
-## Tổng Quan Dự Án
+## Project Overview
 
-Dự án phát triển hệ thống phát hiện và phân loại rác thải tự động sử dụng YOLOv8 (You Only Look Once version 8), hỗ trợ 7 loại rác thải khác nhau với độ chính xác cao và xử lý thời gian thực.
+This project develops an automated waste detection and classification system using YOLOv8 (You Only Look Once version 8), supporting 7 different waste types with high accuracy and real-time processing.
 
-### Khả Năng Chính
+### Key Capabilities
 
--   **Phát hiện đối tượng**: Định vị chính xác vị trí rác thải với bounding box
--   **Phân loại tự động**: Nhận diện 7 loại rác: banana-peel, glass, metal, orange-peel, paper, plastic, styrofoam
--   **Xử lý real-time**: Tốc độ xử lý nhanh phù hợp ứng dụng thực tế
--   **Tích hợp dễ dàng**: API đơn giản, hỗ trợ nhiều định dạng input
+-   **Object detection**: Precisely localize waste positions with bounding boxes
+-   **Automatic classification**: Recognize 7 waste types: banana-peel, glass, metal, orange-peel, paper, plastic, styrofoam
+-   **Real-time processing**: Fast processing speed suitable for practical applications
+-   **Easy integration**: Simple API, supports multiple input formats
 
-## Cấu Trúc Dự Án
+## Project Structure
 
 ```
 yolov11/
-├── dataset.v1i.yolov8/              # Dataset chính (9,413 ảnh)
-│   ├── data.yaml                    # Cấu hình dataset
+├── dataset.v1i.yolov8/              # Primary dataset (9,413 images)
+│   ├── data.yaml                    # Dataset configuration
 │   │
-│   ├── train/                       # Training set (8,169 ảnh - 86.8%)
-│   │   ├── images/                  # Ảnh huấn luyện
-│   │   └── labels/                  # Nhãn YOLO format
+│   ├── train/                       # Training set (8,169 images - 86.8%)
+│   │   ├── images/                  # Training images
+│   │   └── labels/                  # YOLO format labels
 │   │
-│   ├── valid/                       # Validation set (628 ảnh - 6.7%)
-│   │   ├── images/                  # Ảnh validation
-│   │   └── labels/                  # Nhãn validation
+│   ├── valid/                       # Validation set (628 images - 6.7%)
+│   │   ├── images/                  # Validation images
+│   │   └── labels/                  # Validation labels
 │   │
-│   └── test/                        # Test set (616 ảnh - 6.5%)
-│       ├── images/                  # Ảnh test
-│       └── labels/                  # Nhãn test
+│   └── test/                        # Test set (616 images - 6.5%)
+│       ├── images/                  # Test images
+│       └── labels/                  # Test labels
 │
-├── dataset.v2i.yolov8/              # Dataset phiên bản 2
-│   └── [cấu trúc tương tự v1]
+├── dataset.v2i.yolov8/              # Dataset version 2
+│   └── [same structure as v1]
 │
-├── visualization/                   # Thư mục chứa biểu đồ phân tích
+├── visualization/                   # Directory containing analysis charts
 │
-├── best.pt                          # Mô hình có độ chính xác tốt nhất
-├── waste_detection.ipynb            # Jupyter notebook chính
-├── requirements.txt                 # Dependencies Python
-└── README.md                        # Tài liệu này
+├── best.pt                          # Best-performing model weights
+├── waste_detection.ipynb            # Main Jupyter notebook
+├── requirements.txt                 # Python dependencies
+└── README.md                        # This documentation
 ```
 
-## Thông Số Dataset
+## Dataset Specifications
 
-### Tổng Quan Dataset
+### Dataset Overview
 
--   **Tổng số ảnh**: 9,413 ảnh
+-   **Total images**: 9,413 images
 -   **Workspace**: phan-vn-khi (Roboflow)
 -   **Project**: dataset-usskc
 -   **Version**: 1
 -   **License**: CC BY 4.0
 
-### Phân Chia Dữ Liệu
+### Data Split
 
-| Tập dữ liệu | Số lượng ảnh | Tỷ lệ |
-| ----------- | ------------ | ----- |
-| Training    | 8,169        | 86.8% |
-| Validation  | 628          | 6.7%  |
-| Test        | 616          | 6.5%  |
+| Dataset    | Number of images | Ratio |
+| ---------- | ---------------- | ----- |
+| Training   | 8,169            | 86.8% |
+| Validation | 628              | 6.7%  |
+| Test       | 616              | 6.5%  |
 
-### Các Loại Rác Thải (7 classes)
+### Waste Types (7 classes)
 
-1. **banana-peel** - Vỏ chuối
-2. **orange-peel** - Vỏ cam
-3. **paper** - Giấy
-4. **plastic** - Nhựa
-5. **glass** - Thủy tinh
-6. **metal** - Kim loại
-7. **styrofoam** - Xốp
+1. **banana-peel** - Banana peel
+2. **orange-peel** - Orange peel
+3. **paper** - Paper
+4. **plastic** - Plastic
+5. **glass** - Glass
+6. **metal** - Metal
+7. **styrofoam** - Styrofoam
 
-## Cấu Hình Training
+## Training Configuration
 
 ### Model Configuration
 
@@ -101,88 +103,88 @@ yolov11/
 
 ### Hardware Requirements
 
--   **GPU**: NVIDIA GPU với CUDA support (khuyến nghị)
--   **RAM**: Tối thiểu 8GB
--   **Storage**: 15GB để chứa dataset và models
+-   **GPU**: NVIDIA GPU with CUDA support (recommended)
+-   **RAM**: Minimum 8GB
+-   **Storage**: 15GB for dataset and models
 
-## Phân Tích Biểu Đồ
+## Charts Analysis
 
 ### 1. Dataset Distribution Analysis
 
 ![Dataset Distribution](visualization/dataset_distribution.png)
 
-Biểu đồ phân bố dataset cho thấy sự chia tách hợp lý với 86.8% dữ liệu dành cho training, đảm bảo model có đủ dữ liệu học. Tỷ lệ validation và test gần bằng nhau (6.7% và 6.5%) giúp đánh giá khách quan hiệu suất model.
+The dataset distribution chart shows a reasonable split with 86.8% of the data dedicated to training, ensuring the model has sufficient data to learn. The validation and test ratios are nearly equal (6.7% and 6.5%), allowing for objective performance evaluation.
 
 ### 2. Class Distribution Analysis
 
 ![Class Distribution](visualization/class_distribution.png)
 
-Hệ thống hỗ trợ 7 loại rác thải được phân chia theo tính chất môi trường:
+The system supports 7 waste types categorized by environmental characteristics:
 
--   **Organic waste**: banana-peel, orange-peel (phân hủy sinh học)
--   **Recyclable materials**: glass, metal, paper, plastic (có thể tái chế)
--   **Non-recyclable**: styrofoam (khó tái chế)
+-   **Organic waste**: banana-peel, orange-peel (biodegradable)
+-   **Recyclable materials**: glass, metal, paper, plastic (recyclable)
+-   **Non-recyclable**: styrofoam (hard to recycle)
 
 ### 3. Training Configuration
 
 ![Training Config](visualization/training_config.png)
 
-Cấu hình training tối ưu với YOLOv8 Nano cân bằng giữa tốc độ và độ chính xác. Batch size 32 phù hợp với GPU memory thông thường, 20 epochs đủ để model hội tụ mà không bị overfitting.
+The training configuration is optimized with YOLOv8 Nano, balancing speed and accuracy. A batch size of 32 suits typical GPU memory, and 20 epochs are sufficient for convergence without overfitting.
 
 ### 4. Performance Metrics Simulation
 
 ![Performance Metrics](visualization/performance_metrics.png)
 
-Các chỉ số hiệu suất dự kiến:
+Expected performance metrics:
 
--   **Precision**: ~0.85 - Tỷ lệ dự đoán đúng trong các detection
--   **Recall**: ~0.82 - Khả năng phát hiện đối tượng thực tế
--   **mAP@0.5**: ~0.88 - Độ chính xác trung bình tại IoU threshold 0.5
--   **mAP@0.5:0.95**: ~0.65 - Độ chính xác trung bình trên nhiều threshold
+-   **Precision**: ~0.85 - Proportion of correct predictions among detections
+-   **Recall**: ~0.82 - Ability to detect actual objects
+-   **mAP@0.5**: ~0.88 - Mean Average Precision at IoU threshold 0.5
+-   **mAP@0.5:0.95**: ~0.65 - Mean Average Precision across multiple thresholds
 
 ### 5. Detection Pipeline
 
 ![Detection Pipeline](visualization/detection_pipeline.png)
 
-Quy trình detection bao gồm 5 bước chính:
+The detection workflow consists of 5 main steps:
 
-1. **Input Image**: Nhận ảnh đầu vào
-2. **YOLOv8 Model**: Xử lý qua mạng neural
-3. **Object Detection**: Phát hiện vùng chứa đối tượng
-4. **Classification**: Phân loại loại rác thải
-5. **Output Results**: Trả về kết quả với bounding box và nhãn
+1. **Input Image**: Receive input image
+2. **YOLOv8 Model**: Process through neural network
+3. **Object Detection**: Detect object regions
+4. **Classification**: Classify waste types
+5. **Output Results**: Return results with bounding boxes and labels
 
 ### 6. Training Simulation
 
 ![Training Simulation](visualization/training_simulation.png)
 
-Mô phỏng quá trình training qua 20 epochs:
+Training process simulated over 20 epochs:
 
--   **Loss curves**: Training và validation loss giảm dần, cho thấy model học tốt
--   **mAP progression**: Độ chính xác tăng theo thời gian training
--   **Learning rate schedule**: Sử dụng cosine annealing để tối ưu convergence
+-   **Loss curves**: Training and validation loss decrease steadily, indicating good learning
+-   **mAP progression**: Accuracy improves over the course of training
+-   **Learning rate schedule**: Uses cosine annealing to optimize convergence
 
-## Công Nghệ Sử Dụng
+## Technologies Used
 
 ### Core Technologies
 
--   **YOLOv8**: Framework phát hiện đối tượng mới nhất từ Ultralytics
+-   **YOLOv8**: Latest object detection framework from Ultralytics
 -   **PyTorch**: Deep learning framework
--   **OpenCV**: Xử lý hình ảnh và computer vision
--   **Roboflow**: Platform quản lý và annotation dataset
+-   **OpenCV**: Image processing and computer vision
+-   **Roboflow**: Dataset management and annotation platform
 
 ### Libraries & Dependencies
 
--   **ultralytics**: Framework YOLOv8 chính thức
+-   **ultralytics**: Official YOLOv8 framework
 -   **torch**: PyTorch deep learning
--   **torchvision**: Computer vision tools cho PyTorch
+-   **torchvision**: Computer vision tools for PyTorch
 -   **opencv-python**: Computer vision library
 -   **Pillow**: Image processing
 -   **matplotlib**: Visualization
 -   **numpy**: Numerical computing
 -   **roboflow**: Dataset management
 
-## Kiến Trúc Hệ Thống
+## System Architecture
 
 ### 1. Data Pipeline
 
@@ -206,39 +208,39 @@ Input Image → Preprocessing → YOLOv8 Inference → Post-processing → Resul
 
 -   **Backbone**: CSPDarknet (Cross Stage Partial Darknet)
 -   **Neck**: PANet (Path Aggregation Network)
--   **Head**: Detection heads với anchor-free approach
+-   **Head**: Detection heads with anchor-free approach
 -   **Loss Functions**:
     -   Box Loss (CIoU)
     -   Classification Loss (BCE)
     -   DFL Loss (Distribution Focal Loss)
 
-## Các Module Chính
+## Core Modules
 
 ### 1. Data Management Module
 
--   **Dataset Loading**: Tải dữ liệu từ Roboflow hoặc local
--   **Data Preprocessing**: Chuẩn hóa và augmentation
--   **Data Validation**: Kiểm tra tính toàn vẹn dữ liệu
+-   **Dataset Loading**: Load data from Roboflow or local storage
+-   **Data Preprocessing**: Standardization and augmentation
+-   **Data Validation**: Check data integrity
 
 ### 2. Model Training Module
 
--   **Model Initialization**: Khởi tạo YOLOv8 với pretrained weights
--   **Training Loop**: Quá trình huấn luyện với validation
--   **Model Checkpointing**: Lưu trữ model tốt nhất
--   **Metrics Tracking**: Theo dõi loss và accuracy
+-   **Model Initialization**: Initialize YOLOv8 with pretrained weights
+-   **Training Loop**: Training process with validation
+-   **Model Checkpointing**: Save the best-performing model
+-   **Metrics Tracking**: Track loss and accuracy
 
 ### 3. Inference Module
 
--   **Image Preprocessing**: Chuẩn hóa input images
--   **Object Detection**: Phát hiện đối tượng với confidence scores
+-   **Image Preprocessing**: Standardize input images
+-   **Object Detection**: Detect objects with confidence scores
 -   **Post-processing**: NMS (Non-Maximum Suppression)
--   **Visualization**: Vẽ bounding boxes và labels
+-   **Visualization**: Draw bounding boxes and labels
 
 ### 4. Evaluation Module
 
 -   **Metrics Calculation**: Precision, Recall, mAP
--   **Confusion Matrix**: Ma trận nhầm lẫn
--   **Performance Analysis**: Phân tích hiệu suất model
+-   **Confusion Matrix**: Confusion matrix
+-   **Performance Analysis**: Analyze model performance
 
 ## Pipeline
 
@@ -246,7 +248,7 @@ Input Image → Preprocessing → YOLOv8 Inference → Post-processing → Resul
 
 ```
 1. Data Preparation
-   ├── Download dataset từ Roboflow
+   ├── Download dataset from Roboflow
    ├── Validate data format
    └── Split train/valid/test
 
@@ -287,71 +289,71 @@ Input Image → Preprocessing → YOLOv8 Inference → Post-processing → Resul
    └── Save results
 ```
 
-## Hướng Dẫn Cài Đặt
+## Installation Guide
 
-### Yêu Cầu Hệ Thống
+### System Requirements
 
 -   **Python**: 3.8+
--   **GPU**: NVIDIA GPU với CUDA support (khuyến nghị)
--   **RAM**: Tối thiểu 8GB
--   **Storage**: 10GB trống
+-   **GPU**: NVIDIA GPU with CUDA support (recommended)
+-   **RAM**: Minimum 8GB
+-   **Storage**: 10GB free
 
-### Bước 1: Clone Repository
+### Step 1: Clone Repository
 
 ```bash
 git clone https://github.com/PhucHuwu/YOLOv8_Detecting_and_Classifying_Waste.git
 cd yolov11
 ```
 
-### Bước 2: Cài Đặt Dependencies
+### Step 2: Install Dependencies
 
 ```bash
-# Cài đặt các thư viện cần thiết
+# Install required libraries
 pip install -r requirements.txt
 
-# Hoặc cài đặt thủ công
+# Or install manually
 pip install ultralytics torch torchvision opencv-python pillow matplotlib numpy roboflow
 ```
 
-### Bước 3: Kiểm Tra Cài Đặt
+### Step 3: Verify Installation
 
 ```bash
-# Kiểm tra CUDA
+# Check CUDA
 python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}')"
 
-# Kiểm tra Ultralytics
+# Check Ultralytics
 python -c "import ultralytics; print('Ultralytics installed successfully')"
 ```
 
-### Bước 4: Chuẩn Bị Dataset
+### Step 4: Prepare Dataset
 
 ```bash
-# Tùy chọn 1: Sử dụng dataset có sẵn
-# Đảm bảo dataset.v1i.yolov8/ hoặc dataset.v2i.yolov8/ đã có
+# Option 1: Use existing dataset
+# Ensure dataset.v1i.yolov8/ or dataset.v2i.yolov8/ already exists
 
-# Tùy chọn 2: Download từ Roboflow
-# Cần API key và cấu hình workspace/project từ Roboflow
-# - Tạo tài khoản Roboflow: https://roboflow.com
-# - Tạo workspace và project mới
-# - Upload và annotate dataset
-# - Lấy API key từ account settings
+# Option 2: Download from Roboflow
+# Requires API key and workspace/project configuration from Roboflow
+# - Create a Roboflow account: https://roboflow.com
+# - Create a workspace and a new project
+# - Upload and annotate your dataset
+# - Get your API key from account settings
 ```
 
-## Hướng Dẫn Sử Dụng
+## Usage Guide
 
-### 1. Huấn Luyện Model
+### 1. Train the Model
 
-#### Huấn Luyện Cơ Bản
+#### Basic Training
 
 ```bash
-# Sử dụng dataset có sẵn
+# Use existing dataset
 python waste_detection.ipynb --data-yaml dataset.v1i.yolov8/data.yaml
 
-# Download và huấn luyện từ Roboflow
+# Download and train from Roboflow
 python waste_detection.ipynb --api-key YOUR_API_KEY --epochs 20 --batch-size 32
 ```
 
-#### Huấn Luyện Nâng Cao
+#### Advanced Training
 
 ```bash
 python waste_detection.ipynb \
@@ -364,137 +366,137 @@ python waste_detection.ipynb \
     --model-size m
 ```
 
-#### Tham Số Huấn Luyện
+#### Training Parameters
 
--   `--api-key`: API key Roboflow để download dataset
--   `--workspace`: Tên workspace Roboflow của bạn (cần cấu hình theo workspace riêng)
--   `--project`: Tên project Roboflow của bạn (cần cấu hình theo project riêng)
--   `--version`: Phiên bản dataset (mặc định: 1)
--   `--epochs`: Số epoch huấn luyện (mặc định: 20)
--   `--batch-size`: Batch size (mặc định: 32)
--   `--model-size`: Kích thước model YOLOv8 - n(nano), s(small), m(medium), l(large), x(xlarge) (mặc định: n)
--   `--data-yaml`: Đường dẫn file data.yaml (nếu dataset đã có sẵn)
+-   `--api-key`: Roboflow API key to download dataset
+-   `--workspace`: Your Roboflow workspace name (configure according to your workspace)
+-   `--project`: Your Roboflow project name (configure according to your project)
+-   `--version`: Dataset version (default: 1)
+-   `--epochs`: Number of training epochs (default: 20)
+-   `--batch-size`: Batch size (default: 32)
+-   `--model-size`: YOLOv8 model size - n(nano), s(small), m(medium), l(large), x(xlarge) (default: n)
+-   `--data-yaml`: Path to data.yaml (if dataset already exists)
 
-### 2. Kiểm Thử Model
+### 2. Test the Model
 
-#### Đánh Giá Model
+#### Evaluate the Model
 
 ```bash
-# Đánh giá trên tập test
+# Evaluate on the test set
 python test.py --evaluate --data-yaml dataset.v1i.yolov8/data.yaml
 ```
 
-#### Dự Đoán Hình Ảnh Đơn
+#### Single Image Prediction
 
 ```bash
-# Dự đoán trên một hình ảnh
+# Predict on a single image
 python test.py --image path/to/image.jpg
 
-# Dự đoán với visualization
+# Predict with visualization
 python test.py --image path/to/image.jpg --visualize
 ```
 
-#### Dự Đoán Hàng Loạt
+#### Batch Prediction
 
 ```bash
-# Dự đoán trên nhiều hình ảnh
+# Predict on multiple images
 python test.py --image-dir path/to/images/
 ```
 
-#### Tham Số Kiểm Thử
+#### Testing Parameters
 
--   `--model`: Đường dẫn model đã train (.pt file)
--   `--data-yaml`: Đường dẫn file data.yaml cho evaluation
--   `--image`: Đường dẫn hình ảnh đơn cho prediction
--   `--image-dir`: Đường dẫn thư mục hình ảnh cho batch prediction
--   `--evaluate`: Đánh giá model trên tập test
--   `--visualize`: Hiển thị kết quả với matplotlib
--   `--save-result`: Lưu kết quả prediction (mặc định: True)
+-   `--model`: Path to the trained model (.pt file)
+-   `--data-yaml`: Path to data.yaml for evaluation
+-   `--image`: Path to a single image for prediction
+-   `--image-dir`: Path to a directory of images for batch prediction
+-   `--evaluate`: Evaluate the model on the test set
+-   `--visualize`: Display results with matplotlib
+-   `--save-result`: Save prediction results (default: True)
 
-### 3. Workflow Hoàn Chỉnh
+### 3. Complete Workflow
 
-#### Bước 1: Huấn Luyện
+#### Step 1: Training
 
 ```bash
-# Download dataset và huấn luyện
+# Download dataset and train
 python waste_detection.ipynb --api-key YOUR_API_KEY --workspace YOUR_WORKSPACE --project YOUR_PROJECT --epochs 30 --model-size m
 ```
 
-#### Bước 2: Đánh Giá
+#### Step 2: Evaluation
 
 ```bash
-# Đánh giá trên tập test
+# Evaluate on the test set
 python test.py --evaluate --data-yaml dataset.v1i.yolov8/data.yaml
 ```
 
-#### Bước 3: Kiểm Thử
+#### Step 3: Testing
 
 ```bash
-# Test trên hình ảnh đơn
+# Test on a single image
 python test.py --image test_images/waste.jpg --visualize
 
-# Test trên nhiều hình ảnh
+# Test on multiple images
 python test.py --image-dir test_images/
 ```
 
-## Kết Quả và Hiệu Suất
+## Results and Performance
 
-### Metrics Đánh Giá
+### Evaluation Metrics
 
--   **Precision**: Tỷ lệ dự đoán đúng trong tổng số dự đoán
--   **Recall**: Tỷ lệ phát hiện đúng trong tổng số đối tượng thực
--   **mAP@0.5**: Mean Average Precision tại IoU=0.5
--   **mAP@0.5:0.95**: Mean Average Precision qua các ngưỡng IoU
+-   **Precision**: Proportion of correct predictions among all predictions
+-   **Recall**: Proportion of correctly detected objects among all actual objects
+-   **mAP@0.5**: Mean Average Precision at IoU=0.5
+-   **mAP@0.5:0.95**: Mean Average Precision across IoU thresholds
 
-### Cấu Trúc Output
+### Output Structure
 
 ```
 models/
 └── waste_detection/
     ├── weights/
-    │   ├── best.pt      # Model weights tốt nhất
-    │   └── last.pt      # Model weights cuối cùng
-    ├── results.png      # Kết quả huấn luyện
+    │   ├── best.pt      # Best-performing model weights
+    │   └── last.pt      # Final model weights
+    ├── results.png      # Training results
     └── confusion_matrix.png
 
 results/
-├── predictions/         # Dự đoán hình ảnh đơn
-└── batch_predictions/  # Dự đoán hàng loạt
+├── predictions/         # Single image predictions
+└── batch_predictions/  # Batch predictions
 ```
 
-## Xử Lý Sự Cố
+## Troubleshooting
 
-### Các Vấn Đề Thường Gặp
+### Common Issues
 
 #### 1. CUDA Out of Memory
 
 ```bash
-# Giảm batch size
+# Reduce batch size
 python waste_detection.ipynb --batch-size 8
 
-# Sử dụng model nhỏ hơn
+# Use a smaller model
 python waste_detection.ipynb --model-size n
 ```
 
-#### 2. Dataset Không Tìm Thấy
+#### 2. Dataset Not Found
 
--   Kiểm tra đường dẫn data.yaml
--   Đảm bảo dataset được format đúng
--   Kiểm tra quyền truy cập file
+-   Check the path to data.yaml
+-   Ensure the dataset is correctly formatted
+-   Verify file access permissions
 
-#### 3. Model Không Tìm Thấy
+#### 3. Model Not Found
 
--   Huấn luyện model trước bằng `waste_detection.ipynb`
--   Kiểm tra đường dẫn model trong `test.py`
+-   Train the model first using `waste_detection.ipynb`
+-   Verify model path in `test.py`
 
-### Mẹo Tối Ưu Hiệu Suất
+### Performance Optimization Tips
 
--   Sử dụng GPU để huấn luyện nhanh hơn (CUDA)
--   Điều chỉnh batch size theo GPU memory
--   Sử dụng model nhỏ (nano/small) để huấn luyện nhanh
--   Sử dụng model lớn (large/xlarge) để độ chính xác cao hơn
+-   Use a GPU for faster training (CUDA)
+-   Adjust batch size according to GPU memory
+-   Use smaller models (nano/small) for faster training
+-   Use larger models (large/xlarge) for higher accuracy
 
-## Tài Liệu Tham Khảo
+## References
 
 ### Official Documentation
 
@@ -524,14 +526,15 @@ python waste_detection.ipynb --model-size n
 -   [PyTorch Forums](https://discuss.pytorch.org/)
 -   [Computer Vision Stack Exchange](https://datascience.stackexchange.com/questions/tagged/computer-vision)
 
-## Đóng Góp
+## Contributing
 
-Dự án này được phát triển cho mục đích giáo dục và nghiên cứu. Mọi đóng góp đều được chào đón:
+This project is developed for educational and research purposes. All contributions are welcome:
 
-### Người đóng góp
+### Contributors
 
 -   [k4nnguyen](https://github.com/k4nnguyen)
+-   [Thanh Pham Van](https://github.com/thanhpv2006)
 
-## Giấy Phép
+## License
 
-Dự án này được phát triển cho mục đích giáo dục và nghiên cứu. Vui lòng tuân thủ các quy định về giấy phép của các thư viện được sử dụng.
+This project is developed for educational and research purposes. Please comply with the license terms of the libraries used.
