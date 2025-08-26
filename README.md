@@ -528,10 +528,9 @@ python waste_detection.ipynb --model-size n
 
 Dự án này được phát triển cho mục đích giáo dục và nghiên cứu. Mọi đóng góp đều được chào đón:
 
--   Báo cáo bugs và issues
--   Đề xuất tính năng mới
--   Cải thiện documentation
--   Tối ưu hóa code
+### Người đóng góp
+
+-   [k4nnguyen](https://github.com/k4nnguyen)
 
 ## Giấy Phép
 
