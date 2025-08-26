@@ -1,5 +1,5 @@
 # YOLOv8 Waste Detection Project
-.
+
 [VN README](README-vi.md)
 
 ## Table of Contents
