@@ -4,22 +4,22 @@
 
 ## Table of Contents
 
--   [Project Overview](#project-overview)
--   [Project Structure](#project-structure)
--   [Dataset Specifications](#dataset-specifications)
--   [Training Configuration](#training-configuration)
--   [Charts Analysis](#charts-analysis)
--   [Technologies Used](#technologies-used)
--   [System Architecture](#system-architecture)
--   [Core Modules](#core-modules)
--   [Pipeline](#pipeline)
--   [Installation Guide](#installation-guide)
--   [Usage Guide](#usage-guide)
--   [Results and Performance](#results-and-performance)
--   [Troubleshooting](#troubleshooting)
--   [References](#references)
--   [Contributing](#contributing)
--   [License](#license)
+- [Project Overview](#project-overview)
+- [Project Structure](#project-structure)
+- [Dataset Specifications](#dataset-specifications)
+- [Training Configuration](#training-configuration)
+- [Charts Analysis](#charts-analysis)
+- [Technologies Used](#technologies-used)
+- [System Architecture](#system-architecture)
+- [Core Modules](#core-modules)
+- [Pipeline](#pipeline)
+- [Installation Guide](#installation-guide)
+- [Usage Guide](#usage-guide)
+- [Results and Performance](#results-and-performance)
+- [Troubleshooting](#troubleshooting)
+- [References](#references)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Project Overview
 
@@ -27,10 +27,10 @@ This project develops an automated waste detection and classification system usi
 
 ### Key Capabilities
 
--   **Object detection**: Precisely localize waste positions with bounding boxes
--   **Automatic classification**: Recognize 7 waste types: banana-peel, glass, metal, orange-peel, paper, plastic, styrofoam
--   **Real-time processing**: Fast processing speed suitable for practical applications
--   **Easy integration**: Simple API, supports multiple input formats
+- **Object detection**: Precisely localize waste positions with bounding boxes
+- **Automatic classification**: Recognize 7 waste types: banana-peel, glass, metal, orange-peel, paper, plastic, styrofoam
+- **Real-time processing**: Fast processing speed suitable for practical applications
+- **Easy integration**: Simple API, supports multiple input formats
 
 ## Project Structure
 
@@ -66,11 +66,11 @@ yolov11/
 
 ### Dataset Overview
 
--   **Total images**: 9,413 images
--   **Workspace**: phan-vn-khi (Roboflow)
--   **Project**: dataset-usskc
--   **Version**: 1
--   **License**: CC BY 4.0
+- **Total images**: 9,413 images
+- **Workspace**: phan-vn-khi (Roboflow)
+- **Project**: dataset-usskc
+- **Version**: 1
+- **License**: CC BY 4.0
 
 ### Data Split
 
@@ -94,18 +94,18 @@ yolov11/
 
 ### Model Configuration
 
--   **Architecture**: YOLOv8 Nano (yolov8n.pt)
--   **Input size**: 640x640 pixels
--   **Batch size**: 32
--   **Epochs**: 20
--   **Optimizer**: AdamW
--   **Framework**: Ultralytics
+- **Architecture**: YOLOv8 Nano (yolov8n.pt)
+- **Input size**: 640x640 pixels
+- **Batch size**: 32
+- **Epochs**: 20
+- **Optimizer**: AdamW
+- **Framework**: Ultralytics
 
 ### Hardware Requirements
 
--   **GPU**: NVIDIA GPU with CUDA support (recommended)
--   **RAM**: Minimum 8GB
--   **Storage**: 15GB for dataset and models
+- **GPU**: NVIDIA GPU with CUDA support (recommended)
+- **RAM**: Minimum 8GB
+- **Storage**: 15GB for dataset and models
 
 ## Charts Analysis
 
@@ -121,9 +121,9 @@ The dataset distribution chart shows a reasonable split with 86.8% of the data d
 
 The system supports 7 waste types categorized by environmental characteristics:
 
--   **Organic waste**: banana-peel, orange-peel (biodegradable)
--   **Recyclable materials**: glass, metal, paper, plastic (recyclable)
--   **Non-recyclable**: styrofoam (hard to recycle)
+- **Organic waste**: banana-peel, orange-peel (biodegradable)
+- **Recyclable materials**: glass, metal, paper, plastic (recyclable)
+- **Non-recyclable**: styrofoam (hard to recycle)
 
 ### 3. Training Configuration
 
@@ -137,10 +137,10 @@ The training configuration is optimized with YOLOv8 Nano, balancing speed and ac
 
 Expected performance metrics:
 
--   **Precision**: ~0.85 - Proportion of correct predictions among detections
--   **Recall**: ~0.82 - Ability to detect actual objects
--   **mAP@0.5**: ~0.88 - Mean Average Precision at IoU threshold 0.5
--   **mAP@0.5:0.95**: ~0.65 - Mean Average Precision across multiple thresholds
+- **Precision**: ~0.85 - Proportion of correct predictions among detections
+- **Recall**: ~0.82 - Ability to detect actual objects
+- **mAP@0.5**: ~0.88 - Mean Average Precision at IoU threshold 0.5
+- **mAP@0.5:0.95**: ~0.65 - Mean Average Precision across multiple thresholds
 
 ### 5. Detection Pipeline
 
@@ -160,29 +160,29 @@ The detection workflow consists of 5 main steps:
 
 Training process simulated over 20 epochs:
 
--   **Loss curves**: Training and validation loss decrease steadily, indicating good learning
--   **mAP progression**: Accuracy improves over the course of training
--   **Learning rate schedule**: Uses cosine annealing to optimize convergence
+- **Loss curves**: Training and validation loss decrease steadily, indicating good learning
+- **mAP progression**: Accuracy improves over the course of training
+- **Learning rate schedule**: Uses cosine annealing to optimize convergence
 
 ## Technologies Used
 
 ### Core Technologies
 
--   **YOLOv8**: Latest object detection framework from Ultralytics
--   **PyTorch**: Deep learning framework
--   **OpenCV**: Image processing and computer vision
--   **Roboflow**: Dataset management and annotation platform
+- **YOLOv8**: Latest object detection framework from Ultralytics
+- **PyTorch**: Deep learning framework
+- **OpenCV**: Image processing and computer vision
+- **Roboflow**: Dataset management and annotation platform
 
 ### Libraries & Dependencies
 
--   **ultralytics**: Official YOLOv8 framework
--   **torch**: PyTorch deep learning
--   **torchvision**: Computer vision tools for PyTorch
--   **opencv-python**: Computer vision library
--   **Pillow**: Image processing
--   **matplotlib**: Visualization
--   **numpy**: Numerical computing
--   **roboflow**: Dataset management
+- **ultralytics**: Official YOLOv8 framework
+- **torch**: PyTorch deep learning
+- **torchvision**: Computer vision tools for PyTorch
+- **opencv-python**: Computer vision library
+- **Pillow**: Image processing
+- **matplotlib**: Visualization
+- **numpy**: Numerical computing
+- **roboflow**: Dataset management
 
 ## System Architecture
 
@@ -206,41 +206,41 @@ Input Image → Preprocessing → YOLOv8 Inference → Post-processing → Resul
 
 ### 4. Model Architecture
 
--   **Backbone**: CSPDarknet (Cross Stage Partial Darknet)
--   **Neck**: PANet (Path Aggregation Network)
--   **Head**: Detection heads with anchor-free approach
--   **Loss Functions**:
-    -   Box Loss (CIoU)
-    -   Classification Loss (BCE)
-    -   DFL Loss (Distribution Focal Loss)
+- **Backbone**: CSPDarknet (Cross Stage Partial Darknet)
+- **Neck**: PANet (Path Aggregation Network)
+- **Head**: Detection heads with anchor-free approach
+- **Loss Functions**:
+  - Box Loss (CIoU)
+  - Classification Loss (BCE)
+  - DFL Loss (Distribution Focal Loss)
 
 ## Core Modules
 
 ### 1. Data Management Module
 
--   **Dataset Loading**: Load data from Roboflow or local storage
--   **Data Preprocessing**: Standardization and augmentation
--   **Data Validation**: Check data integrity
+- **Dataset Loading**: Load data from Roboflow or local storage
+- **Data Preprocessing**: Standardization and augmentation
+- **Data Validation**: Check data integrity
 
 ### 2. Model Training Module
 
--   **Model Initialization**: Initialize YOLOv8 with pretrained weights
--   **Training Loop**: Training process with validation
--   **Model Checkpointing**: Save the best-performing model
--   **Metrics Tracking**: Track loss and accuracy
+- **Model Initialization**: Initialize YOLOv8 with pretrained weights
+- **Training Loop**: Training process with validation
+- **Model Checkpointing**: Save the best-performing model
+- **Metrics Tracking**: Track loss and accuracy
 
 ### 3. Inference Module
 
--   **Image Preprocessing**: Standardize input images
--   **Object Detection**: Detect objects with confidence scores
--   **Post-processing**: NMS (Non-Maximum Suppression)
--   **Visualization**: Draw bounding boxes and labels
+- **Image Preprocessing**: Standardize input images
+- **Object Detection**: Detect objects with confidence scores
+- **Post-processing**: NMS (Non-Maximum Suppression)
+- **Visualization**: Draw bounding boxes and labels
 
 ### 4. Evaluation Module
 
--   **Metrics Calculation**: Precision, Recall, mAP
--   **Confusion Matrix**: Confusion matrix
--   **Performance Analysis**: Analyze model performance
+- **Metrics Calculation**: Precision, Recall, mAP
+- **Confusion Matrix**: Confusion matrix
+- **Performance Analysis**: Analyze model performance
 
 ## Pipeline
 
@@ -293,21 +293,25 @@ Input Image → Preprocessing → YOLOv8 Inference → Post-processing → Resul
 
 ### System Requirements
 
--   **Python**: 3.8+
--   **GPU**: NVIDIA GPU with CUDA support (recommended)
--   **RAM**: Minimum 8GB
--   **Storage**: 10GB free
+- **Python**: 3.8+
+- **GPU**: NVIDIA GPU with CUDA support (recommended)
+- **RAM**: Minimum 8GB
+- **Storage**: 10GB free
 
 ### Step 1: Clone Repository
 
 ```bash
 git clone https://github.com/PhucHuwu/YOLOv8_Detecting_and_Classifying_Waste.git
-cd yolov11
+cd YOLOv8_Detecting_and_Classifying_Waste
 ```
 
 ### Step 2: Install Dependencies
 
 ```bash
+# Setting virtual environment
+python -m venv venv
+"venv\Scripts\activate"
+
 # Install required libraries
 pip install -r requirements.txt
 
@@ -368,14 +372,14 @@ python waste_detection.ipynb \
 
 #### Training Parameters
 
--   `--api-key`: Roboflow API key to download dataset
--   `--workspace`: Your Roboflow workspace name (configure according to your workspace)
--   `--project`: Your Roboflow project name (configure according to your project)
--   `--version`: Dataset version (default: 1)
--   `--epochs`: Number of training epochs (default: 20)
--   `--batch-size`: Batch size (default: 32)
--   `--model-size`: YOLOv8 model size - n(nano), s(small), m(medium), l(large), x(xlarge) (default: n)
--   `--data-yaml`: Path to data.yaml (if dataset already exists)
+- `--api-key`: Roboflow API key to download dataset
+- `--workspace`: Your Roboflow workspace name (configure according to your workspace)
+- `--project`: Your Roboflow project name (configure according to your project)
+- `--version`: Dataset version (default: 1)
+- `--epochs`: Number of training epochs (default: 20)
+- `--batch-size`: Batch size (default: 32)
+- `--model-size`: YOLOv8 model size - n(nano), s(small), m(medium), l(large), x(xlarge) (default: n)
+- `--data-yaml`: Path to data.yaml (if dataset already exists)
 
 ### 2. Test the Model
 
@@ -405,13 +409,13 @@ python test.py --image-dir path/to/images/
 
 #### Testing Parameters
 
--   `--model`: Path to the trained model (.pt file)
--   `--data-yaml`: Path to data.yaml for evaluation
--   `--image`: Path to a single image for prediction
--   `--image-dir`: Path to a directory of images for batch prediction
--   `--evaluate`: Evaluate the model on the test set
--   `--visualize`: Display results with matplotlib
--   `--save-result`: Save prediction results (default: True)
+- `--model`: Path to the trained model (.pt file)
+- `--data-yaml`: Path to data.yaml for evaluation
+- `--image`: Path to a single image for prediction
+- `--image-dir`: Path to a directory of images for batch prediction
+- `--evaluate`: Evaluate the model on the test set
+- `--visualize`: Display results with matplotlib
+- `--save-result`: Save prediction results (default: True)
 
 ### 3. Complete Workflow
 
@@ -443,10 +447,10 @@ python test.py --image-dir test_images/
 
 ### Evaluation Metrics
 
--   **Precision**: Proportion of correct predictions among all predictions
--   **Recall**: Proportion of correctly detected objects among all actual objects
--   **mAP@0.5**: Mean Average Precision at IoU=0.5
--   **mAP@0.5:0.95**: Mean Average Precision across IoU thresholds
+- **Precision**: Proportion of correct predictions among all predictions
+- **Recall**: Proportion of correctly detected objects among all actual objects
+- **mAP@0.5**: Mean Average Precision at IoU=0.5
+- **mAP@0.5:0.95**: Mean Average Precision across IoU thresholds
 
 ### Output Structure
 
@@ -480,51 +484,51 @@ python waste_detection.ipynb --model-size n
 
 #### 2. Dataset Not Found
 
--   Check the path to data.yaml
--   Ensure the dataset is correctly formatted
--   Verify file access permissions
+- Check the path to data.yaml
+- Ensure the dataset is correctly formatted
+- Verify file access permissions
 
 #### 3. Model Not Found
 
--   Train the model first using `waste_detection.ipynb`
--   Verify model path in `test.py`
+- Train the model first using `waste_detection.ipynb`
+- Verify model path in `test.py`
 
 ### Performance Optimization Tips
 
--   Use a GPU for faster training (CUDA)
--   Adjust batch size according to GPU memory
--   Use smaller models (nano/small) for faster training
--   Use larger models (large/xlarge) for higher accuracy
+- Use a GPU for faster training (CUDA)
+- Adjust batch size according to GPU memory
+- Use smaller models (nano/small) for faster training
+- Use larger models (large/xlarge) for higher accuracy
 
 ## References
 
 ### Official Documentation
 
--   [YOLOv8 Documentation](https://docs.ultralytics.com/)
--   [Ultralytics GitHub](https://github.com/ultralytics/ultralytics)
--   [PyTorch Documentation](https://pytorch.org/docs/)
+- [YOLOv8 Documentation](https://docs.ultralytics.com/)
+- [Ultralytics GitHub](https://github.com/ultralytics/ultralytics)
+- [PyTorch Documentation](https://pytorch.org/docs/)
 
 ### Research Papers
 
--   **YOLOv8 Paper**: "YOLOv8: A State-of-the-Art Real-Time Object Detection Model"
--   **YOLO Evolution**: "YOLO: You Only Look Once - Unified, Real-Time Object Detection"
+- **YOLOv8 Paper**: "YOLOv8: A State-of-the-Art Real-Time Object Detection Model"
+- **YOLO Evolution**: "YOLO: You Only Look Once - Unified, Real-Time Object Detection"
 
 ### Tutorials & Guides
 
--   [Roboflow YOLOv8 Guide](https://blog.roboflow.com/how-to-train-yolov8/)
--   [Computer Vision Tutorials](https://opencv-python-tutroals.readthedocs.io/)
+- [Roboflow YOLOv8 Guide](https://blog.roboflow.com/how-to-train-yolov8/)
+- [Computer Vision Tutorials](https://opencv-python-tutroals.readthedocs.io/)
 
 ### Related Projects
 
--   [YOLOv5](https://github.com/ultralytics/yolov5)
--   [YOLOv7](https://github.com/WongKinYiu/yolov7)
--   [Roboflow Universe](https://universe.roboflow.com/)
+- [YOLOv5](https://github.com/ultralytics/yolov5)
+- [YOLOv7](https://github.com/WongKinYiu/yolov7)
+- [Roboflow Universe](https://universe.roboflow.com/)
 
 ### Community Resources
 
--   [Ultralytics Discord](https://discord.gg/ultralytics)
--   [PyTorch Forums](https://discuss.pytorch.org/)
--   [Computer Vision Stack Exchange](https://datascience.stackexchange.com/questions/tagged/computer-vision)
+- [Ultralytics Discord](https://discord.gg/ultralytics)
+- [PyTorch Forums](https://discuss.pytorch.org/)
+- [Computer Vision Stack Exchange](https://datascience.stackexchange.com/questions/tagged/computer-vision)
 
 ## Contributing
 
@@ -532,8 +536,8 @@ This project is developed for educational and research purposes. All contributio
 
 ### Contributors
 
--   [k4nnguyen](https://github.com/k4nnguyen)
--   [Thanh Pham Van](https://github.com/thanhpv2006)
+- [k4nnguyen](https://github.com/k4nnguyen)
+- [Thanh Pham Van](https://github.com/thanhpv2006)
 
 ## License
 

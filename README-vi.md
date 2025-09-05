@@ -4,22 +4,22 @@
 
 ## Mục Lục
 
--   [Tổng Quan Dự Án](#tổng-quan-dự-án)
--   [Cấu Trúc Dự Án](#cấu-trúc-dự-án)
--   [Thông Số Dataset](#thông-số-dataset)
--   [Cấu Hình Training](#cấu-hình-training)
--   [Phân Tích Biểu Đồ](#phân-tích-biểu-đồ)
--   [Công Nghệ Sử Dụng](#công-nghệ-sử-dụng)
--   [Kiến Trúc Hệ Thống](#kiến-trúc-hệ-thống)
--   [Các Module Chính](#các-module-chính)
--   [Pipeline](#pipeline)
--   [Hướng Dẫn Cài Đặt](#hướng-dẫn-cài-đặt)
--   [Hướng Dẫn Sử Dụng](#hướng-dẫn-sử-dụng)
--   [Kết Quả và Hiệu Suất](#kết-quả-và-hiệu-suất)
--   [Xử Lý Sự Cố](#xử-lý-sự-cố)
--   [Tài Liệu Tham Khảo](#tài-liệu-tham-khảo)
--   [Đóng Góp](#đóng-góp)
--   [Giấy Phép](#giấy-phép)
+- [Tổng Quan Dự Án](#tổng-quan-dự-án)
+- [Cấu Trúc Dự Án](#cấu-trúc-dự-án)
+- [Thông Số Dataset](#thông-số-dataset)
+- [Cấu Hình Training](#cấu-hình-training)
+- [Phân Tích Biểu Đồ](#phân-tích-biểu-đồ)
+- [Công Nghệ Sử Dụng](#công-nghệ-sử-dụng)
+- [Kiến Trúc Hệ Thống](#kiến-trúc-hệ-thống)
+- [Các Module Chính](#các-module-chính)
+- [Pipeline](#pipeline)
+- [Hướng Dẫn Cài Đặt](#hướng-dẫn-cài-đặt)
+- [Hướng Dẫn Sử Dụng](#hướng-dẫn-sử-dụng)
+- [Kết Quả và Hiệu Suất](#kết-quả-và-hiệu-suất)
+- [Xử Lý Sự Cố](#xử-lý-sự-cố)
+- [Tài Liệu Tham Khảo](#tài-liệu-tham-khảo)
+- [Đóng Góp](#đóng-góp)
+- [Giấy Phép](#giấy-phép)
 
 ## Tổng Quan Dự Án
 
@@ -27,10 +27,10 @@ Dự án phát triển hệ thống phát hiện và phân loại rác thải t�
 
 ### Khả Năng Chính
 
--   **Phát hiện đối tượng**: Định vị chính xác vị trí rác thải với bounding box
--   **Phân loại tự động**: Nhận diện 7 loại rác: banana-peel, glass, metal, orange-peel, paper, plastic, styrofoam
--   **Xử lý real-time**: Tốc độ xử lý nhanh phù hợp ứng dụng thực tế
--   **Tích hợp dễ dàng**: API đơn giản, hỗ trợ nhiều định dạng input
+- **Phát hiện đối tượng**: Định vị chính xác vị trí rác thải với bounding box
+- **Phân loại tự động**: Nhận diện 7 loại rác: banana-peel, glass, metal, orange-peel, paper, plastic, styrofoam
+- **Xử lý real-time**: Tốc độ xử lý nhanh phù hợp ứng dụng thực tế
+- **Tích hợp dễ dàng**: API đơn giản, hỗ trợ nhiều định dạng input
 
 ## Cấu Trúc Dự Án
 
@@ -66,11 +66,11 @@ yolov11/
 
 ### Tổng Quan Dataset
 
--   **Tổng số ảnh**: 9,413 ảnh
--   **Workspace**: phan-vn-khi (Roboflow)
--   **Project**: dataset-usskc
--   **Version**: 1
--   **License**: CC BY 4.0
+- **Tổng số ảnh**: 9,413 ảnh
+- **Workspace**: phan-vn-khi (Roboflow)
+- **Project**: dataset-usskc
+- **Version**: 1
+- **License**: CC BY 4.0
 
 ### Phân Chia Dữ Liệu
 
@@ -94,18 +94,18 @@ yolov11/
 
 ### Model Configuration
 
--   **Architecture**: YOLOv8 Nano (yolov8n.pt)
--   **Input size**: 640x640 pixels
--   **Batch size**: 32
--   **Epochs**: 20
--   **Optimizer**: AdamW
--   **Framework**: Ultralytics
+- **Architecture**: YOLOv8 Nano (yolov8n.pt)
+- **Input size**: 640x640 pixels
+- **Batch size**: 32
+- **Epochs**: 20
+- **Optimizer**: AdamW
+- **Framework**: Ultralytics
 
 ### Hardware Requirements
 
--   **GPU**: NVIDIA GPU với CUDA support (khuyến nghị)
--   **RAM**: Tối thiểu 8GB
--   **Storage**: 15GB để chứa dataset và models
+- **GPU**: NVIDIA GPU với CUDA support (khuyến nghị)
+- **RAM**: Tối thiểu 8GB
+- **Storage**: 15GB để chứa dataset và models
 
 ## Phân Tích Biểu Đồ
 
@@ -121,9 +121,9 @@ Biểu đồ phân bố dataset cho thấy sự chia tách hợp lý với 86.8%
 
 Hệ thống hỗ trợ 7 loại rác thải được phân chia theo tính chất môi trường:
 
--   **Organic waste**: banana-peel, orange-peel (phân hủy sinh học)
--   **Recyclable materials**: glass, metal, paper, plastic (có thể tái chế)
--   **Non-recyclable**: styrofoam (khó tái chế)
+- **Organic waste**: banana-peel, orange-peel (phân hủy sinh học)
+- **Recyclable materials**: glass, metal, paper, plastic (có thể tái chế)
+- **Non-recyclable**: styrofoam (khó tái chế)
 
 ### 3. Training Configuration
 
@@ -137,10 +137,10 @@ Cấu hình training tối ưu với YOLOv8 Nano cân bằng giữa tốc độ 
 
 Các chỉ số hiệu suất dự kiến:
 
--   **Precision**: ~0.85 - Tỷ lệ dự đoán đúng trong các detection
--   **Recall**: ~0.82 - Khả năng phát hiện đối tượng thực tế
--   **mAP@0.5**: ~0.88 - Độ chính xác trung bình tại IoU threshold 0.5
--   **mAP@0.5:0.95**: ~0.65 - Độ chính xác trung bình trên nhiều threshold
+- **Precision**: ~0.85 - Tỷ lệ dự đoán đúng trong các detection
+- **Recall**: ~0.82 - Khả năng phát hiện đối tượng thực tế
+- **mAP@0.5**: ~0.88 - Độ chính xác trung bình tại IoU threshold 0.5
+- **mAP@0.5:0.95**: ~0.65 - Độ chính xác trung bình trên nhiều threshold
 
 ### 5. Detection Pipeline
 
@@ -160,29 +160,29 @@ Quy trình detection bao gồm 5 bước chính:
 
 Mô phỏng quá trình training qua 20 epochs:
 
--   **Loss curves**: Training và validation loss giảm dần, cho thấy model học tốt
--   **mAP progression**: Độ chính xác tăng theo thời gian training
--   **Learning rate schedule**: Sử dụng cosine annealing để tối ưu convergence
+- **Loss curves**: Training và validation loss giảm dần, cho thấy model học tốt
+- **mAP progression**: Độ chính xác tăng theo thời gian training
+- **Learning rate schedule**: Sử dụng cosine annealing để tối ưu convergence
 
 ## Công Nghệ Sử Dụng
 
 ### Core Technologies
 
--   **YOLOv8**: Framework phát hiện đối tượng mới nhất từ Ultralytics
--   **PyTorch**: Deep learning framework
--   **OpenCV**: Xử lý hình ảnh và computer vision
--   **Roboflow**: Platform quản lý và annotation dataset
+- **YOLOv8**: Framework phát hiện đối tượng mới nhất từ Ultralytics
+- **PyTorch**: Deep learning framework
+- **OpenCV**: Xử lý hình ảnh và computer vision
+- **Roboflow**: Platform quản lý và annotation dataset
 
 ### Libraries & Dependencies
 
--   **ultralytics**: Framework YOLOv8 chính thức
--   **torch**: PyTorch deep learning
--   **torchvision**: Computer vision tools cho PyTorch
--   **opencv-python**: Computer vision library
--   **Pillow**: Image processing
--   **matplotlib**: Visualization
--   **numpy**: Numerical computing
--   **roboflow**: Dataset management
+- **ultralytics**: Framework YOLOv8 chính thức
+- **torch**: PyTorch deep learning
+- **torchvision**: Computer vision tools cho PyTorch
+- **opencv-python**: Computer vision library
+- **Pillow**: Image processing
+- **matplotlib**: Visualization
+- **numpy**: Numerical computing
+- **roboflow**: Dataset management
 
 ## Kiến Trúc Hệ Thống
 
@@ -206,41 +206,41 @@ Input Image → Preprocessing → YOLOv8 Inference → Post-processing → Resul
 
 ### 4. Model Architecture
 
--   **Backbone**: CSPDarknet (Cross Stage Partial Darknet)
--   **Neck**: PANet (Path Aggregation Network)
--   **Head**: Detection heads với anchor-free approach
--   **Loss Functions**:
-    -   Box Loss (CIoU)
-    -   Classification Loss (BCE)
-    -   DFL Loss (Distribution Focal Loss)
+- **Backbone**: CSPDarknet (Cross Stage Partial Darknet)
+- **Neck**: PANet (Path Aggregation Network)
+- **Head**: Detection heads với anchor-free approach
+- **Loss Functions**:
+  - Box Loss (CIoU)
+  - Classification Loss (BCE)
+  - DFL Loss (Distribution Focal Loss)
 
 ## Các Module Chính
 
 ### 1. Data Management Module
 
--   **Dataset Loading**: Tải dữ liệu từ Roboflow hoặc local
--   **Data Preprocessing**: Chuẩn hóa và augmentation
--   **Data Validation**: Kiểm tra tính toàn vẹn dữ liệu
+- **Dataset Loading**: Tải dữ liệu từ Roboflow hoặc local
+- **Data Preprocessing**: Chuẩn hóa và augmentation
+- **Data Validation**: Kiểm tra tính toàn vẹn dữ liệu
 
 ### 2. Model Training Module
 
--   **Model Initialization**: Khởi tạo YOLOv8 với pretrained weights
--   **Training Loop**: Quá trình huấn luyện với validation
--   **Model Checkpointing**: Lưu trữ model tốt nhất
--   **Metrics Tracking**: Theo dõi loss và accuracy
+- **Model Initialization**: Khởi tạo YOLOv8 với pretrained weights
+- **Training Loop**: Quá trình huấn luyện với validation
+- **Model Checkpointing**: Lưu trữ model tốt nhất
+- **Metrics Tracking**: Theo dõi loss và accuracy
 
 ### 3. Inference Module
 
--   **Image Preprocessing**: Chuẩn hóa input images
--   **Object Detection**: Phát hiện đối tượng với confidence scores
--   **Post-processing**: NMS (Non-Maximum Suppression)
--   **Visualization**: Vẽ bounding boxes và labels
+- **Image Preprocessing**: Chuẩn hóa input images
+- **Object Detection**: Phát hiện đối tượng với confidence scores
+- **Post-processing**: NMS (Non-Maximum Suppression)
+- **Visualization**: Vẽ bounding boxes và labels
 
 ### 4. Evaluation Module
 
--   **Metrics Calculation**: Precision, Recall, mAP
--   **Confusion Matrix**: Ma trận nhầm lẫn
--   **Performance Analysis**: Phân tích hiệu suất model
+- **Metrics Calculation**: Precision, Recall, mAP
+- **Confusion Matrix**: Ma trận nhầm lẫn
+- **Performance Analysis**: Phân tích hiệu suất model
 
 ## Pipeline
 
@@ -293,21 +293,25 @@ Input Image → Preprocessing → YOLOv8 Inference → Post-processing → Resul
 
 ### Yêu Cầu Hệ Thống
 
--   **Python**: 3.8+
--   **GPU**: NVIDIA GPU với CUDA support (khuyến nghị)
--   **RAM**: Tối thiểu 8GB
--   **Storage**: 10GB trống
+- **Python**: 3.8+
+- **GPU**: NVIDIA GPU với CUDA support (khuyến nghị)
+- **RAM**: Tối thiểu 8GB
+- **Storage**: 10GB trống
 
 ### Bước 1: Clone Repository
 
 ```bash
 git clone https://github.com/PhucHuwu/YOLOv8_Detecting_and_Classifying_Waste.git
-cd yolov11
+cd YOLOv8_Detecting_and_Classifying_Waste
 ```
 
 ### Bước 2: Cài Đặt Dependencies
 
 ```bash
+# Cài đặt môi trường ảo
+python -m venv venv
+"venv\Scripts\activate"
+
 # Cài đặt các thư viện cần thiết
 pip install -r requirements.txt
 
@@ -368,14 +372,14 @@ python waste_detection.ipynb \
 
 #### Tham Số Huấn Luyện
 
--   `--api-key`: API key Roboflow để download dataset
--   `--workspace`: Tên workspace Roboflow của bạn (cần cấu hình theo workspace riêng)
--   `--project`: Tên project Roboflow của bạn (cần cấu hình theo project riêng)
--   `--version`: Phiên bản dataset (mặc định: 1)
--   `--epochs`: Số epoch huấn luyện (mặc định: 20)
--   `--batch-size`: Batch size (mặc định: 32)
--   `--model-size`: Kích thước model YOLOv8 - n(nano), s(small), m(medium), l(large), x(xlarge) (mặc định: n)
--   `--data-yaml`: Đường dẫn file data.yaml (nếu dataset đã có sẵn)
+- `--api-key`: API key Roboflow để download dataset
+- `--workspace`: Tên workspace Roboflow của bạn (cần cấu hình theo workspace riêng)
+- `--project`: Tên project Roboflow của bạn (cần cấu hình theo project riêng)
+- `--version`: Phiên bản dataset (mặc định: 1)
+- `--epochs`: Số epoch huấn luyện (mặc định: 20)
+- `--batch-size`: Batch size (mặc định: 32)
+- `--model-size`: Kích thước model YOLOv8 - n(nano), s(small), m(medium), l(large), x(xlarge) (mặc định: n)
+- `--data-yaml`: Đường dẫn file data.yaml (nếu dataset đã có sẵn)
 
 ### 2. Kiểm Thử Model
 
@@ -405,13 +409,13 @@ python test.py --image-dir path/to/images/
 
 #### Tham Số Kiểm Thử
 
--   `--model`: Đường dẫn model đã train (.pt file)
--   `--data-yaml`: Đường dẫn file data.yaml cho evaluation
--   `--image`: Đường dẫn hình ảnh đơn cho prediction
--   `--image-dir`: Đường dẫn thư mục hình ảnh cho batch prediction
--   `--evaluate`: Đánh giá model trên tập test
--   `--visualize`: Hiển thị kết quả với matplotlib
--   `--save-result`: Lưu kết quả prediction (mặc định: True)
+- `--model`: Đường dẫn model đã train (.pt file)
+- `--data-yaml`: Đường dẫn file data.yaml cho evaluation
+- `--image`: Đường dẫn hình ảnh đơn cho prediction
+- `--image-dir`: Đường dẫn thư mục hình ảnh cho batch prediction
+- `--evaluate`: Đánh giá model trên tập test
+- `--visualize`: Hiển thị kết quả với matplotlib
+- `--save-result`: Lưu kết quả prediction (mặc định: True)
 
 ### 3. Workflow Hoàn Chỉnh
 
@@ -443,10 +447,10 @@ python test.py --image-dir test_images/
 
 ### Metrics Đánh Giá
 
--   **Precision**: Tỷ lệ dự đoán đúng trong tổng số dự đoán
--   **Recall**: Tỷ lệ phát hiện đúng trong tổng số đối tượng thực
--   **mAP@0.5**: Mean Average Precision tại IoU=0.5
--   **mAP@0.5:0.95**: Mean Average Precision qua các ngưỡng IoU
+- **Precision**: Tỷ lệ dự đoán đúng trong tổng số dự đoán
+- **Recall**: Tỷ lệ phát hiện đúng trong tổng số đối tượng thực
+- **mAP@0.5**: Mean Average Precision tại IoU=0.5
+- **mAP@0.5:0.95**: Mean Average Precision qua các ngưỡng IoU
 
 ### Cấu Trúc Output
 
@@ -480,51 +484,51 @@ python waste_detection.ipynb --model-size n
 
 #### 2. Dataset Không Tìm Thấy
 
--   Kiểm tra đường dẫn data.yaml
--   Đảm bảo dataset được format đúng
--   Kiểm tra quyền truy cập file
+- Kiểm tra đường dẫn data.yaml
+- Đảm bảo dataset được format đúng
+- Kiểm tra quyền truy cập file
 
 #### 3. Model Không Tìm Thấy
 
--   Huấn luyện model trước bằng `waste_detection.ipynb`
--   Kiểm tra đường dẫn model trong `test.py`
+- Huấn luyện model trước bằng `waste_detection.ipynb`
+- Kiểm tra đường dẫn model trong `test.py`
 
 ### Mẹo Tối Ưu Hiệu Suất
 
--   Sử dụng GPU để huấn luyện nhanh hơn (CUDA)
--   Điều chỉnh batch size theo GPU memory
--   Sử dụng model nhỏ (nano/small) để huấn luyện nhanh
--   Sử dụng model lớn (large/xlarge) để độ chính xác cao hơn
+- Sử dụng GPU để huấn luyện nhanh hơn (CUDA)
+- Điều chỉnh batch size theo GPU memory
+- Sử dụng model nhỏ (nano/small) để huấn luyện nhanh
+- Sử dụng model lớn (large/xlarge) để độ chính xác cao hơn
 
 ## Tài Liệu Tham Khảo
 
 ### Official Documentation
 
--   [YOLOv8 Documentation](https://docs.ultralytics.com/)
--   [Ultralytics GitHub](https://github.com/ultralytics/ultralytics)
--   [PyTorch Documentation](https://pytorch.org/docs/)
+- [YOLOv8 Documentation](https://docs.ultralytics.com/)
+- [Ultralytics GitHub](https://github.com/ultralytics/ultralytics)
+- [PyTorch Documentation](https://pytorch.org/docs/)
 
 ### Research Papers
 
--   **YOLOv8 Paper**: "YOLOv8: A State-of-the-Art Real-Time Object Detection Model"
--   **YOLO Evolution**: "YOLO: You Only Look Once - Unified, Real-Time Object Detection"
+- **YOLOv8 Paper**: "YOLOv8: A State-of-the-Art Real-Time Object Detection Model"
+- **YOLO Evolution**: "YOLO: You Only Look Once - Unified, Real-Time Object Detection"
 
 ### Tutorials & Guides
 
--   [Roboflow YOLOv8 Guide](https://blog.roboflow.com/how-to-train-yolov8/)
--   [Computer Vision Tutorials](https://opencv-python-tutroals.readthedocs.io/)
+- [Roboflow YOLOv8 Guide](https://blog.roboflow.com/how-to-train-yolov8/)
+- [Computer Vision Tutorials](https://opencv-python-tutroals.readthedocs.io/)
 
 ### Related Projects
 
--   [YOLOv5](https://github.com/ultralytics/yolov5)
--   [YOLOv7](https://github.com/WongKinYiu/yolov7)
--   [Roboflow Universe](https://universe.roboflow.com/)
+- [YOLOv5](https://github.com/ultralytics/yolov5)
+- [YOLOv7](https://github.com/WongKinYiu/yolov7)
+- [Roboflow Universe](https://universe.roboflow.com/)
 
 ### Community Resources
 
--   [Ultralytics Discord](https://discord.gg/ultralytics)
--   [PyTorch Forums](https://discuss.pytorch.org/)
--   [Computer Vision Stack Exchange](https://datascience.stackexchange.com/questions/tagged/computer-vision)
+- [Ultralytics Discord](https://discord.gg/ultralytics)
+- [PyTorch Forums](https://discuss.pytorch.org/)
+- [Computer Vision Stack Exchange](https://datascience.stackexchange.com/questions/tagged/computer-vision)
 
 ## Đóng Góp
 
@@ -532,8 +536,8 @@ Dự án này được phát triển cho mục đích giáo dục và nghiên c�
 
 ### Người đóng góp
 
--   [k4nnguyen](https://github.com/k4nnguyen)
--   [Phạm Văn Thành](https://github.com/thanhpv2006)
+- [k4nnguyen](https://github.com/k4nnguyen)
+- [Phạm Văn Thành](https://github.com/thanhpv2006)
 
 ## Giấy Phép
 
